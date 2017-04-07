@@ -1,0 +1,5 @@
+package org.rachel.graph.informationflow;
+
+public class Edge {
+
+}

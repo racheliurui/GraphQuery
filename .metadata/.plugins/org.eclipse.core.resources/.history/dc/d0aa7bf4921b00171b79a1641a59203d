@@ -1,0 +1,28 @@
+package org.rachel.graph.informationflow;
+import com.tinkerpop.blueprints.Graph;
+import com.tinkerpop.blueprints.Vertex;
+import com.tinkerpop.blueprints.impls.tg.TinkerGraph;
+
+public class InfoflowGraph {
+	
+	private Graph graph ;
+	
+	public InfoflowGraph (){		
+		// in-memory
+		graph = new TinkerGraph();
+
+		// on graph.shutdown() the graph is serialized to disk with Java serialization
+		//Graph graphFromFile = new TinkerGraph("/tmp/tinkergraph");
+	}
+	
+	
+	public void addVertex(Node node){
+		Vertex a = graph.addVertex(null);
+		a.setProperty("id", node.getId());
+		a.setProperty("name", node.getName());
+		a.setProperty("name", node.getName());
+	}
+	
+	
+
+}

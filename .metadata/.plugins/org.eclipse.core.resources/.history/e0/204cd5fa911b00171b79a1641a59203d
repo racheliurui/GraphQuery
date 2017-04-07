@@ -1,0 +1,17 @@
+package org.rachel.graph.informationflow;
+
+import java.util.Date;
+
+public class Node {
+    String id;
+    String name;
+    
+    Date createDate;
+    int numberOfEdges;
+    
+    String createBy;
+    
+    
+	
+
+}

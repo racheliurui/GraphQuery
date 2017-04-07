@@ -1,0 +1,14 @@
+package org.rachel.graph.informationflow;
+
+import java.util.Date;
+
+public class Edge {
+    String id;
+    String fromId;
+    String toId;
+    String description;
+    
+    
+    int numberOfMessagePerDay;
+    Date createdDate;
+}

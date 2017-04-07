@@ -1,0 +1,15 @@
+package org.rachel.graph;
+import com.tinkerpop.blueprints.Graph;
+
+public class InfoflowGraph {
+	
+	InfoflowGraph (){
+		
+		// in-memory
+		Graph graph = new TinkerGraph();
+
+		// on graph.shutdown() the graph is serialized to disk with Java serialization
+		Graph graph = new TinkerGraph("/tmp/tinkergraph");
+	}
+
+}
