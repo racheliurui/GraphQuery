@@ -43,4 +43,10 @@ dependency-reduced-pom.xml
 *.iws
 *.idea
 
+#STS
+.metadata/
+.recommenders/
+.RemoteSystemsTempFiles/
+Servers/
+
 README.html
