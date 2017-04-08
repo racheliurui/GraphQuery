@@ -1,0 +1,21 @@
+package org.rachel.graph;
+
+import org.apache.tinkerpop.gremlin.structure.Graph;
+import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
+import org.rachel.graph.informationflow.InfoflowGraph;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+@SpringBootApplication
+public class BlueprintsPoCApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BlueprintsPoCApplication.class, args);
+		Graph g=TinkerGraph.open();
+		
+		Graph g = new InfoflowGraph().getInitedGraph();
+		
+		g.traversal().V().ou
+	}
+}

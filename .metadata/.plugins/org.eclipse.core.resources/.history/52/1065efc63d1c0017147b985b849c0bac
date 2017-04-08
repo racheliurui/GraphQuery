@@ -1,0 +1,23 @@
+package org.rachel.graph;
+
+import org.rachel.graph.informationflow.InfoflowGraph;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.tinkerpop.blueprints.Graph;
+import com.tinkerpop.blueprints.GraphQuery;
+import com.tinkerpop.blueprints.Query;
+import com.tinkerpop.blueprints.Vertex;
+import com.tinkerpop.blueprints.impls.tg.TinkerGraph;
+
+@SpringBootApplication
+public class BlueprintsPoCApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BlueprintsPoCApplication.class, args);
+		
+		Graph g = new InfoflowGraph().getInitedGraph();
+		
+		g.traversal()
+	}
+}
