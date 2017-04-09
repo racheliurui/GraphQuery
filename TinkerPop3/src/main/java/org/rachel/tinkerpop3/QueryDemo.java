@@ -16,16 +16,17 @@ import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
 
 public class QueryDemo {
 	
+
 	public static void runDemo() throws Exception{
+		        long startTime = System.nanoTime();
+		        long previousTime = System.nanoTime();
 		
-		// V3 version
+	         	// V3 version
 				//http://tinkerpop.apache.org/docs/current/reference/#tinkergraph-gremlin
 				//http://gremlindocs.spmallette.documentup.com/
 				
 				// build the graph
-				DateFormat df = new SimpleDateFormat("MM dd kk:mm:ss yyyy");
-
-				
+				DateFormat df = new SimpleDateFormat("MM dd kk:mm:ss yyyy");				
 				Graph graph = TinkerGraph.open();
 				Vertex v1 = graph.addVertex("id", "id1", "name", "name1", "createdDate", df.parse("01 22 11:31:13 2011"),"decription","test111");
 				Vertex v2 = graph.addVertex("id", "id2", "name", "name2", "createdDate", df.parse("02 22 11:31:13 2012"),"decription","test111");
@@ -47,6 +48,9 @@ public class QueryDemo {
 				v4.addEdge("infoflow", v5, "id", "edgeId45", "numOfMessage", 111);
 				v5.addEdge("infoflow", v6, "id", "edgeId56", "numOfMessage", 111);
 
+				System.out.println("execution time from start is   "+(System.nanoTime()-startTime)/1000000 + "  milliseconds");
+				System.out.println("execution time from previous step is   "+(System.nanoTime()-previousTime)/1000000 + "  milliseconds");
+				previousTime = System.nanoTime();
 				// traverse and query the graph
 				GraphTraversalSource g = graph.traversal();
 				
@@ -75,7 +79,9 @@ public class QueryDemo {
 					return Tr_vertex.get().property("name").value().toString().contains(nameFilter);
 				};		
 				System.out.println(g.V().filter( NodeCriterion).values("id").toList().toString());
-				
+				System.out.println("execution time from start is   "+(System.nanoTime()-startTime)/1000000 + "  milliseconds");
+				System.out.println("execution time from previous step is   "+(System.nanoTime()-previousTime)/1000000 + "  milliseconds");
+				previousTime = System.nanoTime();
 				
 				System.out.println("===========demo1 end==========");
 				
@@ -90,6 +96,10 @@ public class QueryDemo {
 				};
 				System.out.println("==Edge with num of outbound messages bigger than "+numOfMsg);
 				System.out.println(g.E().filter(EdgeCriterion).values("id","name").toList().toString());
+				
+				System.out.println("execution time from start is   "+(System.nanoTime()-startTime)/1000000 + "  milliseconds");
+				System.out.println("execution time from previous step is   "+(System.nanoTime()-previousTime)/1000000 + "  milliseconds");
+				previousTime = System.nanoTime();
 				System.out.println("===========demo2 end==========");
 				
 				
@@ -116,20 +126,22 @@ public class QueryDemo {
 				subGraph=(Graph)g.V().has("name","name1").repeat(__.bothE().filter(subGraphEdgeCriterion).subgraph("subGraph").bothV()).times(3).cap("subGraph").next();
 				sg=subGraph.traversal();
 				System.out.println(sg.V().values("id").toList().toString());
-				System.out.println(sg.E().values("id").toList().toString());				
+				System.out.println(sg.E().values("id").toList().toString());	
+				System.out.println("execution time from start is   "+(System.nanoTime()-startTime)/1000000 + "  milliseconds");
+				System.out.println("execution time from previous step is   "+(System.nanoTime()-previousTime)/1000000 + "  milliseconds");
+				previousTime = System.nanoTime();
 				System.out.println("===========end1==========");		
 				
 				
 			
 				System.out.println(sg.V().filter(subGraphNodeCriterion).values("id").toList().toString());
-				System.out.println(sg.E().values("id").toList().toString());				
+				System.out.println(sg.E().values("id").toList().toString());
+				System.out.println("execution time from start is   "+(System.nanoTime()-startTime)/1000000 + "  milliseconds");
+				System.out.println("execution time from previous step is   "+(System.nanoTime()-previousTime)/1000000 + "  milliseconds");
+				previousTime = System.nanoTime();
 				System.out.println("===========end2==========");
 				
-//				Graph subGraph1=(Graph)g.V().has("name","name1").repeat(__.bothE().filter(subGraphEdgeCriterion).subgraph("subGraph").bothV().filter(subGraphNodeCriterion)).times(3).cap("subGraph").next();
-//				sg=subGraph1.traversal();
-//				System.out.println(sg.V().values("id").toList().toString());
-//				System.out.println(sg.E().values("id").toList().toString());
-//				subGraph1.close();
+
 				
 				System.out.println("===========end==========");
 				
